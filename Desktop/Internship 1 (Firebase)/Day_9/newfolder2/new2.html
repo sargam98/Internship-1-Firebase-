@@ -1,0 +1,19 @@
+<script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
+<script>
+	if(annyang){
+		var d=new Date("2018-07-12")
+		alert("hi");
+		var anything=function(anything){
+			console.log(d)
+		 alert(d);
+	};
+		var commands={
+			'*date': anything 
+	};
+
+	
+	
+	annyang.addCommands(commands);
+	annyang.start();
+}
+</script>

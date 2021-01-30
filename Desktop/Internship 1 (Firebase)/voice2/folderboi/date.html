@@ -1,0 +1,16 @@
+<script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
+<script>
+	if(annyang){
+		alert("hi");
+		var commands={
+			'*anything': anything 
+	};
+
+	var anything=function(anything){
+		 alert(anything);
+	};
+	
+	annyang.addCommands(commands);
+	annyang.start();
+}
+</script>

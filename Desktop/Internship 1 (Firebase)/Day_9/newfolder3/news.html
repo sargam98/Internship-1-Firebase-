@@ -1,0 +1,16 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$.ajax({
+		url: 'https://newsapi.org/v2/top-headlines',
+		type: 'GET',
+		data: {
+			sources:'the-times-of-india',
+			apiKey:"a00ce9d2aa3748b39fc1410ce7862019"},
+			success:function(resp){
+				console.log(resp);
+				for(var i=0;i<resp["articles"].length;i++){
+					$('#display').append('<a href="'+resp["articles"][i]["url"]+'">"'+resp["articles"][i]["description"]+'"</a><br><br>');
+				}
+				}
+	})
+</script>

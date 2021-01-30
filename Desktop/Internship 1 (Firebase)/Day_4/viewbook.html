@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  	<title>View All Books</title>
+  	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+</head>
+<body background='library.jpg' style="scale:100%;">
+
+	<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<div class="navbar-header">
+		<a class="navbar-brand" href="#">Library</a>
+		</div>
+	<ul class="nav navbar-nav">
+	  <li><a href="index.html">Home</a></li>
+	  <li><a href="addbook.html">Add Book</a></li>
+	  <li><a href="addstudent.html">Add Student</a></li>
+	  <li><a href="issuebook.html">Issue Book</a></li>
+	  <li><a href="returnbook.html">Return Book</a></li>
+	  <li class='active' ><a href="viewbook.html">View Book</a></li>
+	</ul>
+	</div>
+	</nav>
+	<div id="container" class="container" style="margin-top:50px;">
+	
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+			<b><h2><kbd>All Books!</kbd></h2><b>
+	<form id="form" class="contact-form">
+	<div class="row">
+			<div class="input-field col-sm-12">
+				<table background='white.png 'class='table' id='table'>
+							<thead>
+							<tr>
+								<td><b>Book Name</b></td>
+								<td><b>Book Author</b></td>
+								<td><b>Book Quantity</b></td>
+								<td><b>Book Cover</b></td>
+							</tr>
+							</thead>
+							<tbody id='tbod'>
+							</tbody>
+							
+				</table>
+			</div>
+	</div>
+	</form>
+	</div>
+	</div>
+	</div>
+</body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/5.1.0/firebase.js"></script>
+<script>
+	var config = {
+	    apiKey: "AIzaSyBqmZEMHSU39pNxm76_KpR9IIBmq6Tn-EQ",
+	    authDomain: "projectname-80633.firebaseapp.com",
+	    databaseURL: "https://projectname-80633.firebaseio.com",
+	    projectId: "projectname-80633",
+	    storageBucket: "gs://projectname-80633.appspot.com",
+	    messagingSenderId: "670185351289"
+  	};
+
+    firebase.initializeApp(config);
+
+
+
+	var database = firebase.database();
+	var ref=database.ref().child('LDBMS/AddBook/');
+
+	ref.on("child_added",function(child){
+	$('#tbod').append('<tr id="'+child.keys+'">'+
+			'<td>'+child.val().Book_Name+'</td>'+
+			'<td>'+child.val().Book_Author+'</td>'+
+			'<td>'+child.val().Book_Stock+'</td>'+
+			'<td> <img src='+child.val().Book_Photo+' width="200px" height="200px"></td>'+
+			'</tr>');
+	});
+</script>
+
+

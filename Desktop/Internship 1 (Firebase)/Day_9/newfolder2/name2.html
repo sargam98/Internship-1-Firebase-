@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Calculator</title>
+	<meta charset="utf-8">
+	<meta name="veiwport" content="width=.device.width,initial scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+</head>
+<body>
+	<p id="display"></p>
+</body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.1.0/firebase.js"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
+<script src="https://code.responsivevoice.org/responsivevoice.js"></script>
+<script type="text/javascript">
+
+<script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAasjjyMGjTHJDz5kdRA1tMwlEyC1MuRts",
+    authDomain: "proj26-88255.firebaseapp.com",
+    databaseURL: "https://proj26-88255.firebaseio.com",
+    projectId: "proj26-88255",
+    storageBucket: "proj26-88255.appspot.com",
+    messagingSenderId: "991502011378"
+  };
+  firebase.initializeApp(config);
+
+if (annyang){
+	alert("hi");
+	var names=" ";
+	var arr= new Array();
+	var ag=" "; 
+	responsiveVoice.speak("Say your full name","UK English Male");
+	var commands={
+		'name *num':function(naam){  
+			arr=naam.split(" ");
+			$('#display').text(arr[1]+" "+arr[2]); 
+			responsiveVoice.speak("Say your age","UK English Male");
+			},
+		'age *number':function(ages) { 
+			if (Number.isInteger(parseInt(ages)))  
+			{
+				$('#display').text(parseInt(ages));
+				ag=parseInt(ages);
+					names=arr[1]+" "+arr[2];
+	var database = firebase.database();
+	var ref=database.ref().child('VoiceDetails/');
+	firebase.database().ref().child('VoiceDetails/').push({
+	
+
+      Name: names,
+      Age: ag,
+    }).then(function() {
+
+      alert("Saved");
+
+    }).catch(function(error) {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+
+      alert(errorMessage);
+
+
+    });
+			}
+			else{	responsiveVoice.speak("Number please!","UK English Male");
+}
+		},
+			'*details':function(){  
+			responsiveVoice.speak("your name is"+names,"UK English Male");
+			responsiveVoice.speak("your age is"+ag,"UK English Male");
+			},
+	}
+	
+
+
+}
+annyang.addCommands(commands);
+annyang.start();
+</script>
+

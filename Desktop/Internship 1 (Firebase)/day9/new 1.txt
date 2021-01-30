@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Stream>
+  <Packages>
+    <!--InputFile elements here-->
+    <InputFile type="cab" store="pkgproof_proof\x64\ship\es-es\proof.Culture.msi.16.cab" dest="Office\Data\Version\Proof.x64.es-es.16.cab" />
+    <InputFile type="cab" store="pkgclient_outlookmui\x64\ship\en-us\outlookmui.msi.16.cab" dest="Office\Data\Version\Outlook.x64.en-us.16.cab" />
+    <InputFile type="cab" store="pkgclient_excelmui\x64\ship\en-us\excelmui.msi.16.cab" dest="Office\Data\Version\Excel.x64.en-us.16.cab" />
+    <InputFile type="cab" store="pkgclient_projectmui\x64\ship\en-us\projectmui.msi.16.cab" dest="Office\Data\Version\Project.x64.en-us.16.cab" />
+    <InputFile type="cab" store="pkgclient_accessmui\x64\ship\en-us\accessmui.msi.16.cab" dest="Office\Data\Version\Access.x64.en-us.16.cab" />
+    <InputFile type="cab" store="pkgclient_osmuxmui\x64\ship\en-us\osmuxmui.msi.16.cab" dest="Office\Data\Version\OSMUX.x64.en-us.16.cab" />
+    <InputFile type="cab" store="pkgclient_proofing\x64\ship\en-us\proofing.msi.16.cab" dest="Office\Data\Version\Proofing.x64.en-us.16.cab" />
+    <InputFile type="cab" store="pkgproof_proof\x64\ship\en-us\proof.Culture.msi.16.cab" dest="Office\Data\Version\Proof.x64.en-us.16.cab" />
+    <InputFile type="cab" store="pkgclient_visiomui\x64\ship\en-us\visiomui.msi.16.cab" dest="Office\Data\Version\Visio.x64.en-us.16.cab" />
+    <InputFile type="cab" store="pkgclient_wordmui\x64\ship\en-us\wordmui.msi.16.cab" dest="Office\Data\Version\Word.x64.en-us.16.cab" />
+    <InputFile type="cab" store="pkgclient_dcfmui\x64\ship\en-us\dcfmui.msi.16.cab" dest="Office\Data\Version\DCF.x64.en-us.16.cab" />
+    <InputFile type="cab" store="pkgclient_mondoonlymui\x64\ship\en-us\mondoonlymui.msi.16.cab" dest="Office\Data\Version\MondoOnly.x64.en-us.16.cab" />
+    <InputFile type="cab" store="pkgclient_osmmui\x64\ship\en-us\osmmui.msi.16.cab" dest="Office\Data\Version\OSM.x64.en-us.16.cab" />
+    <InputFile type="cab" store="pkgclient_officemuiset\x64\ship\en-us\officemuiset.msi.16.cab" dest="Office\Data\Version\OfficeSet.x64.en-us.16.cab" />
+    <InputFile type="cab" store="pkgclient_lyncmui\x64\ship\en-us\lyncmui.msi.16.cab" dest="Office\Data\Version\Lync.x64.en-us.16.cab" />
+    <InputFile type="cab" store="pkgclient_officemui\x64\ship\en-us\officemui.msi.16.cab" dest="Office\Data\Version\Office.x64.en-us.16.cab" />
+    <InputFile type="cab" store="pkgclient_onenotemui\x64\ship\en-us\onenotemui.msi.16.cab" dest="Office\Data\Version\OneNote.x64.en-us.16.cab" />
+    <InputFile type="cab" store="pkgclient_groovemui\x64\ship\en-us\groovemui.msi.16.cab" dest="Office\Data\Version\Groove.x64.en-us.16.cab" />
+    <InputFile type="cab" store="pkgclient_powerpointmui\x64\ship\en-us\powerpointmui.msi.16.cab" dest="Office\Data\Version\PowerPoint.x64.en-us.16.cab" />
+    <InputFile type="cab" store="pkgclient_accessmuiset\x64\ship\en-us\accessmuiset.msi.16.cab" dest="Office\Data\Version\AccessSet.x64.en-us.16.cab" />
+    <InputFile type="cab" store="pkgclient_office32mui\x64\ship\en-us\office32mui.msi.16.cab" dest="Office\Data\Version\Office32MUI.x64.en-us.16.cab" />
+    <InputFile type="cab" store="pkgproof_proof\x64\ship\fr-fr\proof.Culture.msi.16.cab" dest="Office\Data\Version\Proof.x64.fr-fr.16.cab" />
+    <InputFile type="cab" store="pkgclient_publishermui\x64\ship\en-us\publishermui.msi.16.cab" dest="Office\Data\Version\Publisher.x64.en-us.16.cab" />
+  </Packages>
+  <Environment>
+    <!--Envionment elements here-->
+  </Environment>
+</Stream>

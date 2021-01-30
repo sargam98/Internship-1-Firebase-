@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+  	<title>Google Login</title>
+  	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+  </head>
+  <body>
+
+  	<div id="container" class="container" style="margin-top: 50px;">
+
+  		<div class="row">
+  			<div class="col-md-6 col-md-offset-3">
+
+  				<div class="form-group">
+  					<label for="usr">Username:</label>
+  					<input type="text" class="form-control" id="usr">
+  				</div>
+	
+  				<div class="form-group">
+  					<label for="pwd">Password:</label>
+  					<input type="password" class="form-control" id="pwd">
+  				</div>
+
+  				<button type="button" class="btn" id="submit"> Submit </button>
+								<button type="button" class="btn" id="googlebtn">Google Login</button>
+
+
+
+  				<div id="userblock" style="display: none;">
+  					<p id="userinfo"></p>
+  					<button type="button" class="btn" onclick="logout();">Logout</button>
+  				</div>
+
+
+  			</div>
+
+  		</div>
+
+
+
+
+
+  	</div>
+			</body>
+  </html>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase.js"></script>
+  <script>
+  // Initialize Firebase
+  var config = {
+  	apiKey: "AIzaSyA2sxONgDQMRDwb8Twzv9nJHFFIuPuoy8g",
+  	authDomain: "aitd-workshop.firebaseapp.com",
+  	databaseURL: "https://aitd-workshop.firebaseio.com",
+  	projectId: "aitd-workshop",
+  	storageBucket: "aitd-workshop.appspot.com",
+  	messagingSenderId: "668092341251"
+  };
+  firebase.initializeApp(config);
+
+
+
+
+
+  firebase.auth().onAuthStateChanged(function(user) {
+
+  	var user = firebase.auth().currentUser;
+  	var email,uid;
+
+  	if (user) {
+  		/*if(user.email == null){
+
+  			email = user.phoneNumber;
+
+  		}
+  		else{
+  			email = user.email;
+  		}*/
+  		email = user.email;
+  		uid = user.uid;
+  		console.log(email,uid);
+  		$('#googlebtn').hide();
+  		$('#userblock').show();
+  		$('#userinfo').text('Hello '+ email);
+
+  	} else {
+  		console.log(user);
+  	}
+  });
+
+
+
+
+
+  function logout(){
+
+
+  	firebase.auth().signOut().then(function() {
+  		$('#userblock').hide();
+  		console.log('Signed Out');
+  		$('#googlebtn').show();
+  		alert('Signed Out');
+  	}, function(error) {
+  		console.error('Sign Out Error', error);
+  	});
+
+    //window.location.href="login.html";
+
+}
+
+
+
+
+
+$('#googlebtn').click(function(event) {
+
+	var provider = new firebase.auth.GoogleAuthProvider();
+	provider.addScope('https://www.googleapis.com/auth/userinfo.profile');
+	firebase.auth().useDeviceLanguage();
+
+
+	firebase.auth().signInWithPopup(provider).then(function(result) {
+
+		var token = result.credential.accessToken;
+		var user = result.user;
+
+		console.log('Success');
+
+	}).catch(function(error) {
+
+		var errorCode = error.code;
+		var errorMessage = error.message;
+		var email = error.email;
+		var credential = error.credential;
+
+
+		if (errorCode == 'auth/account-exists-with-different-credential') {
+
+			alert('You already have the same email with diffrent account. \n  Please sign in with that account instead.');
+		} 
+		else {
+
+			alert(errorMessage);
+		}
+
+	});
+
+});
+  			</div>
+
+  		</div>
+
+
+
+  </script>
+  	</div>
+
+  </body>
+  </html>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+  <script type="text/javascript">
+  	$('#submit').click(function(event) {
+  		
+  		alert(+"Login Successful!"+$('#usr').val());
+
+  	});

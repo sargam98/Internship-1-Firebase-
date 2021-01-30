@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<body>
+	<button type="button" id="submit">Submit</button>
+</body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$("#submit").click(function(event){
+		var input = 'john smith-123 Street~Apt 4~New York~NY~12345';
+		var fields = input.split('~');
+		var name = fields[0];
+		var street = fields[1];
+		alert(name+"--"+street);
+	});
+</script>

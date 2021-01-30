@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+  	<title>Chat Login</title>
+  	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+  </head>
+  <body>
+
+  	<div id="container" class="container" style="margin-top: 50px;">
+
+  		<div class="row">
+  			<div class="col-md-6 col-md-offset-3">
+
+  				<div class="form-group">
+  					<label for="usr">Username:</label>
+  					<input type="text" class="form-control" id="usr">
+  				</div>
+	
+  				<div class="form-group">
+  					<label for="pwd">Password:</label>
+  					<input type="password" class="form-control" id="pwd">
+  				</div>
+
+  				<button type="button" class="btn" id="submit"> Login </button>
+
+
+  				<div id="userblock" style="display: none;">
+  					<p id="userinfo"></p>
+  					<button type="button" class="btn" onclick="logout();">Logout</button>
+  				</div>
+
+
+  			</div>
+
+  		</div>
+
+  	</div>
+			</body>
+  </html>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase.js"></script>
+  <script>
+  // Initialize Firebase
+  var config = {
+      apiKey: "AIzaSyBqmZEMHSU39pNxm76_KpR9IIBmq6Tn-EQ",
+      authDomain: "projectname-80633.firebaseapp.com",
+      databaseURL: "https://projectname-80633.firebaseio.com",
+      projectId: "projectname-80633",
+      storageBucket: "gs://projectname-80633.appspot.com",
+      messagingSenderId: "670185351289"
+    };
+
+    firebase.initializeApp(config);
+  $('#submit').click(function(event) {
+  var database = firebase.database();
+  var ref=database.ref().child('MiniChat/');
+  
+  
+  ref.orderByChild("Username").equalTo($('#usr').val()).on("child_added",function(child){
+  console.log("child.key");
+  if (child.val().Password==($('#pwd').val()))
+  {
+    alert("Successfully Logged In");
+    localStorage.setItem("user",child.key);
+    alert(localStorage.getItem("user"));
+    window.location.href = "listofusers.html";
+
+
+  }
+  else
+  {
+    alert("Login Failed,Please try again");
+    $('#form')[0].reset();
+
+  }
+});
+});
+
+  </script>
+  	</div>
+
+  </body>
+  </html>
+

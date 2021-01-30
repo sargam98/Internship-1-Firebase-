@@ -1,0 +1,31 @@
+<script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
+<script type="text/javascript">
+if (annyang)
+{
+alert("Hi !");
+var add = function(add){
+var fields = add.split(' ');
+var sum=0;
+for(var i=0;i<fields.length;i++){
+console.log(fields[i]);
+if(isNaN(fields[i])){
+console.log("false");
+}
+else{
+sum = parseInt(sum) +parseInt(fields[i]);
+}
+}
+responsiveVoice.speak("Hey there","UK English Male");
+//alert("Sum : "+sum);
+responsiveVoice.speak("The sum is "+sum);
+}
+//var sum=parseInt(fields[0])+parseInt(fields[2]);
+//alert("Sum : "+sum);
+var commands={
+'add *data': add
+};
+annyang.addCommands(commands);
+annyang.start();
+}
+</script>
+	

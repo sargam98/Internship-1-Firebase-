@@ -1,0 +1,36 @@
+<script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
+<script>
+	if(annyang){
+		alert("hi");
+		var add1;
+		var anything=function(a){
+		var a1=parseInt(a);
+		alert(a1);
+		};
+		var commands1={
+			'num1': a
+	};
+		var anything=function(b){
+		var a2=parseInt(b);
+		alert(a2);
+		};
+	var commands2={
+			'num2': b 
+	};
+       var anything=function(anything){
+		if(anything=='add'){
+		 alert(a1+a2);
+     }  
+	}; 		
+		
+	
+		var commands3={
+			'anything': anything 
+	};
+
+	annyang.addCommands(commands1);
+	annyang.addCommands(commands2);
+	annyang.addCommands(commands3);
+	annyang.start();
+}
+</script>

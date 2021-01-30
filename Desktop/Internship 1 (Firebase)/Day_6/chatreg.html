@@ -1,0 +1,102 @@
+ <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <title>Chat_App</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  </head>
+  <body>
+    <body style="background-color:powderblue;">
+
+<h1 style="text-align:center;"><b><kbd>User Registration</kbd></b></h1>
+
+    <div id="container" class="container" style="margin-top: 50px;">
+
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+
+          <div class="form-group">
+            <label for="usr">Username:</label>
+            <input type="text" class="form-control" id="usr">
+          </div>
+        <div class="form-group">
+            <label for="mob">Mobile Number:</label>
+            <input type="numbers" class="form-control" id="mob">
+          </div>
+          <div class="form-group">
+            <label for="pwd">Password:</label>
+            <input type="password" class="form-control" id="pwd">
+          </div>
+          <div class="form-group">        
+          <input type="file" name="image" id="image" class="form-control" placeholder="Choose Image" style="height: 50px;">
+          <img src="" id="uploadedimg" class="img-responsive" style="width: 100%;">
+    </div>
+
+          <button type="button" class="btn" id="submit"> Register </button>
+
+
+        </div>
+
+      </div>
+
+
+
+    </div>
+
+  </body>
+  </html>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase.js"></script>
+
+
+  <script>
+  var config = {
+      apiKey: "AIzaSyBqmZEMHSU39pNxm76_KpR9IIBmq6Tn-EQ",
+      authDomain: "projectname-80633.firebaseapp.com",
+      databaseURL: "https://projectname-80633.firebaseio.com",
+      projectId: "projectname-80633",
+      storageBucket: "gs://projectname-80633.appspot.com",
+      messagingSenderId: "670185351289"
+    };
+
+    firebase.initializeApp(config);
+      var image = document.getElementById("image");
+    image.addEventListener('change', function(e){
+    var file = e.target.files[0];
+    var storageRef = firebase.storage().ref(file.name);
+    storageRef.put(file).then(function(snapshot) {
+    storageRef.getDownloadURL().then(function(url) {
+      $('#uploadedimg').attr('src',url);
+      imgurl=url;
+});
+});
+});
+
+$('#submit').click(function(event) {
+
+  var database = firebase.database();
+  var ref=database.ref().child('MiniChat/');
+    firebase.database().ref().child('MiniChat/').push({
+
+      Username: $('#usr').val(),
+      Phone_no: $('#mob').val(),
+      Password: $('#pwd').val(),
+      Userimg:imgurl
+    }).then(function() {
+      alert("Registered");
+  localStorage.setItem("user",$('#usr').val());
+    alert("Welcome, "+localStorage.getItem("user"));
+    window.location.href = "chatlogin.html";
+    
+      $('#form')[0].reset();
+    }).catch(function(error) {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      alert(errorMessage);
+    });
+  });
+
+  </script>
